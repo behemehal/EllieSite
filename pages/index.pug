@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='icon' type='image/png' href='/cdn/img/massive_logo.png')
+    title Ellie
+  body.d-flex.flex-column.h-100
+    include ../includes/header.pug
+    main
+      section.theme-section.section
+        .row
+          .col
+            p.section-one-leader Ellie is a scripting engine that runs on embedded and sandboxed environments.
+          .col
+            img.section-two-leader(src="../img/controller.png" alt="Ellie Controller" width="285" heigh="285")
+      section.dark-section.section
+        .row
+          .col
+            div.detail-container
+              div.icon-container
+                span.material-icons hail
+              span.detail-text Portability
+              br
+              span.detail-desc Package your workspace run later
+          .col
+            div.detail-container
+              div.icon-container
+                span.material-icons memory
+              span.detail-text Low memory usage
+              br
+              span.detail-desc Run your code in low memory devices
+          .col
+            div.detail-container
+              div.icon-container
+                span.material-icons running_with_errors
+              span.detail-text Fail safe countermeasures
+              br
+              span.detail-desc Recover errors easily with protected per device framework
+//      section.light-section.section
+//        h2 Examples
+//
+//        div.

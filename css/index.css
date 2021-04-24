@@ -1,0 +1,100 @@
+.bg-theme {
+    background-color: #F5EAEF;
+    font-family: 'Montserrat';
+}
+
+.navbar-theme .navbar-brand {
+    color: #884A6F;
+}
+
+.navbar-theme .navbar-brand:hover {
+    color: #5f334e;
+}
+
+.navbar-theme .navbar-brand:focus {
+    color: #633551;
+}
+
+.navbar-theme a.nav-link {
+    color: #884A6F;
+}
+
+.navbar-theme a.nav-link:hover {
+    color: #5f334e;
+}
+
+.navbar-theme a.nav-link:focus {
+    color: #633551;
+}
+
+.navbar-divider {
+    width: 1px;
+    height: 25px;
+    background: #884A6F;
+}
+
+.section {
+    padding: 3rem !important;
+    font-family: Montserrat;
+}
+
+.dark-section {
+    color: #F5EAEF;
+    background: #462B45;
+}
+
+.theme-section {
+    background: #F5EAEF;
+    color: #884A6F;
+}
+
+.light-section {
+    background: #FFFFFF;
+    color: #884A6F;
+}
+
+.section-one-leader {
+    font-size: 32px;
+}
+
+.section-two-leader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.detail-container {
+    text-align: center;
+}
+
+.detail-container .detail-text {
+    font-size: 22px;
+}
+
+.detail-container .detail-desc {
+    color: #C6C6C6;
+    font-size: 14px;
+}
+
+.icon-container {
+    width: 75px;
+    height: 75px;
+    background: #F5EAEF;
+    border-radius: 80px;
+    color: #884A6F;
+    width: 75px;
+    height: 75px;
+    background: #F5EAEF;
+    border-radius: 80px;
+    color: #884A6F;
+    text-align: center;
+    padding-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.icon-container .material-icons {
+    font-size: 34px;
+}
