@@ -303,8 +303,8 @@ class Codev {
     versionDiv.innerHTML = this.#version;
 
     statusBar.appendChild(label);
-    statusBar.appendChild(this.#lineIndDiv);
-    statusBar.appendChild(versionDiv);
+    //statusBar.appendChild(this.#lineIndDiv);
+    //statusBar.appendChild(versionDiv);
 
     div.appendChild(statusBar);
     this.#targetDiv.appendChild(div);
