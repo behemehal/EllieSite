@@ -52,12 +52,12 @@ loopCode.supplyCode(`for (i, 0, 30) {
     //a loop that counts 0 to 30
 }`)
 
-dataTypeCode.supplyCode(`v aString : string = "This is a string";
+dataTypeCode.supplyCode(`v aString : string = "yup it is";
 v aChar : char = 'a';
 v aInt : int = 123;
 v aFloat : float = 1.3;
 
-v aDynamicArray : dynamicArray(char) = [
+v aDynamicArray : dynamicArray(5) = [
     'E',
     'L',
     'L',
