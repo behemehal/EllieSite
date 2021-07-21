@@ -103,7 +103,7 @@ class Codev {
     crh: {
       reg: new RegExp(/(?!>)(\'+(.)+\')(?!<\/crh>)(?!>)/g),
       color: "#f00",
-    }
+    },
   };
 
   constructor(divId, ignoreCss) {
