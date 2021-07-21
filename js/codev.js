@@ -163,7 +163,6 @@ class Codev {
         .codeView .code {
             overflow:auto;
             font-size: 14px;
-            width: -moz-fit-content;
         }
 
         .codeView .code .empty {
@@ -177,10 +176,11 @@ class Codev {
         }
 
         .codeView .code .line .lineInd {
-            width: 35px;
-            text-align: right;
-            margin-right: 5px;
-            user-select: none;
+          width: 35px !important;
+          text-align: right;
+          margin-right: 5px;
+          user-select: none;
+          min-width: 35px;
         }
 
         .codeView .code .line .split {
