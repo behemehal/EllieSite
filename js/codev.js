@@ -163,6 +163,7 @@ class Codev {
         .codeView .code {
             overflow:auto;
             font-size: 14px;
+            width: -moz-fit-content;
         }
 
         .codeView .code .empty {
@@ -172,7 +173,7 @@ class Codev {
         .codeView .code .line {
             display: flex;
             height: 19px;
-            width: 100vh;
+            
         }
 
         .codeView .code .line .lineInd {
@@ -187,9 +188,9 @@ class Codev {
         }
 
         .codeView .code .line .lineCode {
-            width: 100%;
             margin-left: 10px;
-            white-space:pre
+            white-space: pre;
+            min-width: max-content;
         }
 
         ${Object.entries(this.#colorize)
