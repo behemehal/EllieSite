@@ -290,3 +290,13 @@
 .navbar-toggler {
     display: none;
 }
+
+.feature-photo-r img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.feature-photo-l img {
+    max-width: 100% !important;
+    height: auto !important;
+}
