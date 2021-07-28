@@ -35,14 +35,11 @@ let fnCode = new Codev("examplePage2");
 let loopCode = new Codev("examplePage3");
 let dataTypeCode = new Codev("examplePage4");
 
-classCode.supplyCode(`class Test<T> {
-    co Test(param) {
-        //Some constructor code
-    }
+classCode.supplyCode(`fn test() { //Return type is void
 
-    pub v param : T;
-    pri v version : string = "v2";
-}`)
+}
+
+test() //Return type is void`)
 
 fnCode.supplyCode(`fn test(param: string) > int {
     ret param.len;

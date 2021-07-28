@@ -1,0 +1,3 @@
+User-agent: * Disallow: 
+Allow: /*.html$
+Sitemap: https://ellie.behemehal.net/sitemap.xml
