@@ -16,7 +16,7 @@ html(lang='en')
     meta(property="og:description" content="Ellie is a scripting engine that runs on embedded and sandboxed environments.")
     meta(property="og:image" content="https://ellie.behemehal.net/img/Social.png")
 
-    
+
     // Twitter
     meta(property='twitter:url' content="https://ellie.behemehal.net")
     meta(property='twitter:title' content="Ellie Programing Language")
@@ -58,22 +58,22 @@ html(lang='en')
       section.dark-section.section
         .row
           .col
-            div.detail-container
-              div.icon-container
+            .detail-container
+              .icon-container
                 span.material-icons hail
               span.detail-text Portability
               br
               span.detail-desc Package your workspace run later
           .col
-            div.detail-container
-              div.icon-container
+            .detail-container
+              .icon-container
                 span.material-icons memory
               span.detail-text Low memory usage
               br
               span.detail-desc Run your code in low memory devices
           .col
-            div.detail-container
-              div.icon-container
+            .detail-container
+              .icon-container
                 span.material-icons running_with_errors
               span.detail-text Fail safe countermeasures
               br
@@ -100,24 +100,38 @@ html(lang='en')
 
       section.dark-section.section
         .feature-block
-          div.feature-text-l
+          .feature-text-l
             | Write code with 
             span.vscodeText VSCode 
             | extension assistance, discover efficient ways for better softwares
-          div.feature-photo-r
+          .feature-photo-r
             img(src="./img/vs.png")
       section.light-section.section
         .feature-block
-          div.feature-photo-l
+          .feature-photo-l
             img(src="./img/ellieUp.png" width="500px" height="330px")
-          div.feature-text-r
+          .feature-text-r
             | Manage your robotic projects via EllieUp. Create, edit upload your projects to microcontrollers.
       section.dark-section.section
         .feature-block
-          div.feature-text-l
+          .feature-text-l
             | Import native libraries to engine easily have control over runtime
-          div.feature-photo-r
+          .feature-photo-r
             img(src="./img/natv.png")
+
+      section.sponsors-section.section
+        h1.text-center Our Sponsors
+        br
+        h5.text-center Thanks to our sponsors ellie can be maintained for forever! ❤
+        .row.mt-5
+          .col
+            .detail-container
+              a(href="https://www.deployhq.com/")
+                img(src="./img/deployhq.svg" alt="deployhqlg" width="140px")
+        br
+        .d-flex.text-center.justify-content-center
+          p Interested in becoming a sponsor? Please let us&#160
+          a(href="mailto:info@behemehal.net?subject=Sponsor") know
 
       section.black-section.section.text-center
         p Ellie Language
