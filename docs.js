@@ -40,9 +40,6 @@ var categories = {
                 {
                     "name": "subTypesA1",
                     "id": "stA1",
-                    "content": `
-                        
-                    `
                 }
             ]
         },
