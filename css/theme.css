@@ -63,7 +63,7 @@
 }
 
 .black-section {
-    background: #212529;
+    background: black;
     color: #884A6F;
 }
 
@@ -123,4 +123,19 @@
 
 .icon-container .material-icons {
     font-size: 34px;
+}
+
+a {
+    color: #884a6f !important;
+}
+
+.link-sections a {
+    margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.inner_scope {
+    padding-left:4.00em;
 }
