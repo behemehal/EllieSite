@@ -62,17 +62,20 @@
 
     .feature-block {
         display: block !important;
-        
+        padding-right: 5vh;
+        padding-left: 5vh;
     }
 
     .feature-text-l {
         margin-bottom: 15px !important;
         text-align: center;
+        width: 45%;
     }
     
     .feature-text-r {
         margin-top: 15px !important;
         text-align: center;
+        width: 45%;
     }
 
     .feature-photo-r img {
