@@ -1,0 +1,10 @@
+#btns {
+    margin-left: 30px;
+    margin-right: 30px;
+    overflow: auto;
+}
+
+#btns a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
