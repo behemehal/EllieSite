@@ -41,11 +41,11 @@ classCode.supplyCode(`fn test() { //Return type is void
 
 test() //Return type is void`)
 
-fnCode.supplyCode(`fn test(param: string) > int {
+fnCode.supplyCode(`fn test(param: string) : int {
     ret param.len;
 }`)
 
-loopCode.supplyCode(`for (i, 0, 30) {
+loopCode.supplyCode(`for i : 30 {
     //a loop that counts 0 to 30
 }`)
 
@@ -54,7 +54,7 @@ v aChar : char = 'a';
 v aInt : int = 123;
 v aFloat : float = 1.3;
 
-v aDynamicArray : dynamicArray(5) = [
+v aVector : [char, *] = [
     'E',
     'L',
     'L',
@@ -62,12 +62,12 @@ v aDynamicArray : dynamicArray(5) = [
     'E',
 ];
 
-v aFixedSizeArray : array(2, char) = [
+v aArray : [char, 2] = [
     'I',
     'S'
 ];
 
-v aCollective : collective(int, string) = {
+v aCollective : {int, string} = {
     0: 'G',
     2: 'O',
     3: 'O',

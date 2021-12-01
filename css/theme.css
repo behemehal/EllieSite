@@ -42,6 +42,10 @@
     font-family: Montserrat;
 }
 
+.section .title {
+    padding-top: 10px;
+}
+
 .dark-section {
     color: #F5EAEF;
     background: #462B45;
@@ -49,6 +53,7 @@
 
 .theme-section {
     background: #F5EAEF;
+    font-family: Montserrat;
     color: #884A6F;
 }
 
@@ -90,6 +95,7 @@
     display: block;
 }
 
+/*
 .navbar-toggler {
     display: none;
 }
@@ -97,6 +103,8 @@
 #navbarCollapse {
     display: none !important;
 }
+
+*/
 
 .icon-container .material-icons {
     font-size: 34px;
@@ -125,8 +133,12 @@
     font-size: 34px;
 }
 
-a {
+.light-section a {
     color: #884a6f !important;
+}
+
+.dark-section a {
+    color: #F5EAEF !important;
 }
 
 .link-sections a {
