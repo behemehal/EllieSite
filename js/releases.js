@@ -52,5 +52,4 @@ octokit.request('GET /repos/{owner}/{repo}/releases', {
     }
 
     document.querySelector('.releases').style.display = 'block';
-    console.log(e)
 });
