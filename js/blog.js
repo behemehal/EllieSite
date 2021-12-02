@@ -94,8 +94,6 @@ if (targeted == null) {
             var md = lines.slice(8);
             var parsedConf = convertToObject(conf.map(x => parseKeyValue(x)));
 
-            console.log(parsedConf)
-
             marked.setOptions({
                 renderer: new marked.Renderer(),
                 highlight: function (code, lang) {
@@ -129,12 +127,12 @@ if (targeted == null) {
             script.setAttribute("crossorigin", "anonymous");
 
             var owner = document.createElement("div");
-            owner.innerHTML = `<a style="text-align: right;" href="https://github.com/${conf.owner.replace("@", "")}">Created by ${conf.owner}</a>
-            <p style="text-align: right;">Created at ${moment(conf.date).format("MM.DD.YYYY HH:mm")}</p>`
+            owner.innerHTML = `<a style="text-align: right;" href="https://github.com/${parsedConf.owner.toString().replace("@", "")}">Created by ${parsedConf.owner}</a>
+            <p style="text-align: right;">Created at ${moment(parsedConf.date).format("MM.DD.YYYY HH:mm")}</p>`
 
             if (conf.updated_by) {
-                owner.innerHTML = `<br><a style="text-align: right;" href="https://github.com/${conf.owner.replace("@", "")}">Updated by: ${conf.updated_by}</a>
-                <p style="text-align: right;">Created at ${moment(conf.updated_at).format("MM.DD.YYYY HH:mm")}</p>`
+                owner.innerHTML = `<br><a style="text-align: right;" href="https://github.com/${parsedConf.owner.toString().replace("@", "")}">Updated by: ${parsedConf.updated_by}</a>
+                <p style="text-align: right;">Created at ${moment(parsedConf.updated_at).format("MM.DD.YYYY HH:mm")}</p>`
             }
 
             var div = document.createElement('div');
