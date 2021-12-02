@@ -129,11 +129,11 @@ if (targeted == null) {
             var owner = document.createElement("div");
             owner.style = "text-align: right;";
             owner.innerHTML = `<a style="text-align: right;" href="https://github.com/${parsedConf.publisher.toString().replace("@", "")}">Created by ${parsedConf.publisher}</a>
-            <p style="text-align: right;">Created at ${moment(parsedConf.date).format("MM.DD.YYYY HH:mm")}</p>`
+            <p style="text-align: right;">Created at ${moment(parsedConf.date).format("DD.MM.YYYY-HH.mm")}</p>`
 
             if (conf.updated_by) {
                 owner.innerHTML = `<br><a style="text-align: right;" href="https://github.com/${parsedConf.updated_by.toString().replace("@", "")}">Updated by: ${parsedConf.updated_by}</a>
-                <p style="text-align: right;">Created at ${moment(parsedConf.updated_at).format("MM.DD.YYYY HH:mm")}</p>`
+                <p style="text-align: right;">Created at ${moment(parsedConf.updated_at).format("DD.MM.YYYY-HH.mm")}</p>`
             }
 
             var div = document.createElement('div');
