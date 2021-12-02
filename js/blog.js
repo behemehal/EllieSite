@@ -127,6 +127,7 @@ if (targeted == null) {
             script.setAttribute("crossorigin", "anonymous");
 
             var owner = document.createElement("div");
+            owner.style = "text-align: right;";
             owner.innerHTML = `<a style="text-align: right;" href="https://github.com/${parsedConf.publisher.toString().replace("@", "")}">Created by ${parsedConf.owner}</a>
             <p style="text-align: right;">Created at ${moment(parsedConf.date).format("MM.DD.YYYY HH:mm")}</p>`
 
