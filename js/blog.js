@@ -136,6 +136,7 @@ if (targeted == null) {
             div.appendChild(gis)
             document.body.appendChild(script);
             document.querySelector('.blogs').appendChild(div)
+            document.querySelector('#rm').style.display = 'none';
             document.querySelector('.loader').style.display = 'none';
             document.querySelector('.blogs').style.display = 'block';
 
