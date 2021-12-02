@@ -119,7 +119,7 @@ if (targeted == null) {
             script.setAttribute("data-category", "Comments");
             script.setAttribute("data-category-id", "DIC_kwDOGdv8O84CAHDn");
             script.setAttribute("data-mapping", "specific");
-            script.setAttribute("data-term", conf.title);
+            script.setAttribute("data-term", parsedConf.title);
             script.setAttribute("data-reactions-enabled", "1");
             script.setAttribute("data-emit-metadata", "0");
             script.setAttribute("data-theme", "https://ellie.behemehal.net/css/gis_theme.css");
