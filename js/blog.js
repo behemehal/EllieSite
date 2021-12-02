@@ -121,12 +121,21 @@ if (targeted == null) {
             script.setAttribute("data-category", "Comments");
             script.setAttribute("data-category-id", "DIC_kwDOGdv8O84CAHDn");
             script.setAttribute("data-mapping", "specific");
-            script.setAttribute("data-term", "change_this");
+            script.setAttribute("data-term", conf.title);
             script.setAttribute("data-reactions-enabled", "1");
             script.setAttribute("data-emit-metadata", "0");
             script.setAttribute("data-theme", "https://ellie.behemehal.net/css/gis_theme.css");
             script.setAttribute("data-lang", "en");
             script.setAttribute("crossorigin", "anonymous");
+
+            var owner = document.createElement("div");
+            div.innerHTML = `<a style="text-align: right;" href="https://github.com/${conf.owner.replace("@", "")}">Created by ${conf.owner}</a>
+            <p style="text-align: right;">Created at ${moment(conf.date).format("MM.DD.YYYY HH:mm")}</p>`
+
+            if (conf.updated_by) {
+                div.innerHTML = `<br><a style="text-align: right;" href="https://github.com/${conf.owner.replace("@", "")}">Updated by: ${conf.updated_by}</a>
+                <p style="text-align: right;">Created at ${moment(conf.updated_at).format("MM.DD.YYYY HH:mm")}</p>`
+            }
 
             var div = document.createElement('div');
             div.style.padding = "3rem";
@@ -139,7 +148,5 @@ if (targeted == null) {
             document.querySelector('#rm').style.display = 'none';
             document.querySelector('.loader').style.display = 'none';
             document.querySelector('.blogs').style.display = 'block';
-
-
-        })
+        });
 }
