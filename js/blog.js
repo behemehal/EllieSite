@@ -116,17 +116,17 @@ if (targeted == null) {
 
             var script = document.createElement("script");
             script.src = 'https://giscus.app/client.js';
-            script["data-repo"] = "behemehal/ellieblog";
-            script["data-repo-id"] = "R_kgDOGdv8Ow";
-            script["data-category"] = "Comments";
-            script["data-category-id"] = "DIC_kwDOGdv8O84CAHDn";
-            script["data-mapping"] = "specific";
-            script["data-term"] = "change_this";
-            script["data-reactions-enabled"] = "1";
-            script["data-emit-metadata"] = "0";
-            script["data-theme"] = "https://ellie.behemehal.net/css/gis_theme.css";
-            script["data-lang"] = "en";
-            script["crossorigin"] = "anonymous";
+            script.addAtrribute("data-repo", "behemehal/ellieblog");
+            script.addAtrribute("data-repo-id", "R_kgDOGdv8Ow");
+            script.addAtrribute("data-category", "Comments");
+            script.addAtrribute("data-category-id", "DIC_kwDOGdv8O84CAHDn");
+            script.addAtrribute("data-mapping", "specific");
+            script.addAtrribute("data-term", "change_this");
+            script.addAtrribute("data-reactions-enabled", "1");
+            script.addAtrribute("data-emit-metadata", "0");
+            script.addAtrribute("data-theme", "https://ellie.behemehal.net/css/gis_theme.css");
+            script.addAtrribute("data-lang", "en");
+            script.addAtrribute("crossorigin", "anonymous");
 
             var div = document.createElement('div');
             div.style.padding = "3rem";
