@@ -115,18 +115,18 @@ if (targeted == null) {
             });
 
             var script = document.createElement("script");
-            script.src = 'https://giscus.app/client.js';
-            script.addAtrribute("data-repo", "behemehal/ellieblog");
-            script.addAtrribute("data-repo-id", "R_kgDOGdv8Ow");
-            script.addAtrribute("data-category", "Comments");
-            script.addAtrribute("data-category-id", "DIC_kwDOGdv8O84CAHDn");
-            script.addAtrribute("data-mapping", "specific");
-            script.addAtrribute("data-term", "change_this");
-            script.addAtrribute("data-reactions-enabled", "1");
-            script.addAtrribute("data-emit-metadata", "0");
-            script.addAtrribute("data-theme", "https://ellie.behemehal.net/css/gis_theme.css");
-            script.addAtrribute("data-lang", "en");
-            script.addAtrribute("crossorigin", "anonymous");
+            script.setAttribute("src", 'https://giscus.app/client.js');
+            script.setAttribute("data-repo", "behemehal/ellieblog");
+            script.setAttribute("data-repo-id", "R_kgDOGdv8Ow");
+            script.setAttribute("data-category", "Comments");
+            script.setAttribute("data-category-id", "DIC_kwDOGdv8O84CAHDn");
+            script.setAttribute("data-mapping", "specific");
+            script.setAttribute("data-term", "change_this");
+            script.setAttribute("data-reactions-enabled", "1");
+            script.setAttribute("data-emit-metadata", "0");
+            script.setAttribute("data-theme", "https://ellie.behemehal.net/css/gis_theme.css");
+            script.setAttribute("data-lang", "en");
+            script.setAttribute("crossorigin", "anonymous");
 
             var div = document.createElement('div');
             div.style.padding = "3rem";
