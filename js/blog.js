@@ -1,6 +1,13 @@
+var headers = new Headers();
+headers.append('pragma', 'no-cache');
+headers.append('Cache-Control', 'no-cache');
+
 var targeted = new URLSearchParams(location.search).get("page");
 if (targeted == null) {
-    fetch('https://raw.githubusercontent.com/behemehal/EllieBlog/main/blog.json')
+    fetch(new Request('https://raw.githubusercontent.com/behemehal/EllieBlog/main/blog.json'), {
+            method: 'GET',
+            headers,
+        })
         .then(response => response.json())
         .then(data => {
             document.querySelector('#rm').style.display = 'block';
@@ -85,7 +92,10 @@ if (targeted == null) {
         return "\n"
     }
 
-    fetch('https://raw.githubusercontent.com/behemehal/EllieBlog/main/blogs/' + targeted)
+    fetch(new Request('https://raw.githubusercontent.com/behemehal/EllieBlog/main/blogs/' + targeted), {
+            method: 'GET',
+            headers,
+        })
         .then(response => response.text())
         .then(data => {
             if (data == "404: Not Found") {
