@@ -103,6 +103,24 @@ if (targeted == null) {
                 var md = lines.slice(8);
                 var parsedConf = convertToObject(conf.map(x => parseKeyValue(x)));
 
+                /*
+                    date: "4.12.2021-00.56"
+                    description: "After 29 days build is finally complete"
+                    publisher: "@ahmtcn123"
+                    title: "Tokenizer build is complete"
+                    updated_at: "false"
+                    updated_by: "false"
+                */
+
+                document.querySelector("[name=description]").content = parsedConf.description;
+                document.querySelector("[property=\"og:description\"]").content = parsedConf.description;
+                document.querySelector("[property=\"twitter:description\"]").content = parsedConf.description;
+
+                document.querySelector("[name=title]").content = "EllieBlog | " + parsedConf.title;
+                document.querySelector("[property=\"og:title\"]").content = "EllieBlog | " + parsedConf.title;
+                document.querySelector("[property=\"twitter:title\"]").content = "EllieBlog | " + parsedConf.title;
+                document.title = "EllieBlog | " + parsedConf.title;
+                document.querySelector("[name=author]").content = parsedConf.publisher;
                 marked.setOptions({
                     renderer: new marked.Renderer(),
                     highlight: function (code, lang) {
