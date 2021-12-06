@@ -1,12 +1,8 @@
-var headers = new Headers();
-headers.append('pragma', 'no-cache');
-headers.append('Cache-Control', 'no-cache');
-
 var targeted = new URLSearchParams(location.search).get("page");
 if (targeted == null) {
     fetch(new Request('https://raw.githubusercontent.com/behemehal/EllieBlog/main/blog.json'), {
             method: 'GET',
-            headers,
+            cache: "no-cache"
         })
         .then(response => response.json())
         .then(data => {
@@ -94,7 +90,7 @@ if (targeted == null) {
 
     fetch(new Request('https://raw.githubusercontent.com/behemehal/EllieBlog/main/blogs/' + targeted), {
             method: 'GET',
-            headers,
+            cache: "no-cache"
         })
         .then(response => response.text())
         .then(data => {
