@@ -49,7 +49,60 @@ html(lang='en')
     title Ellie Programing Language
   body.d-flex.flex-column.h-100
     include ../includes/header.pug
+    style
+      | .notifier {
+      |   opacity: 0;
+      |   transition: opacity 1s;
+      |   color: #462B45;
+      |   max-width: 350px;
+      |   min-width: 150px;
+      |   min-height: 90px;
+      |   background-color: #f5eaef;
+      |   padding: 10px;
+      |   width: fit-content;
+      |   width: -moz-fit-content;
+      |   border: 1px solid #462B45;
+      |   position: fixed;
+      |   bottom: 20px;
+      |   right: 20px;
+      | }
+      | 
+      | .notifier .nheader {
+      |   display: flex;
+      |   margin-bottom: 5px;
+      | }
+      | 
+      | .notifier .nhead {
+      |   font-size: 20px;
+      | }
+      | 
+      | .notifier .nclose_btn {
+      |     background-color: #462B45;
+      |     display: block;
+      |     margin-left: auto;
+      |     margin-top: 19px;
+      |     color: #f5eaef;
+      |     width: 25px;
+      |     height: 25px;
+      |     text-align: center;
+      |     user-select: none;
+      |     cursor: pointer;
+      | }
+
+    script(defer)
+      | setTimeout(() => {document.querySelector(".notifier").style.opacity = 1; document.querySelector(".nclose_btn").onclick = () => document.querySelector(".notifier").style.opacity = 0;}, 1000);
+      | setTimeout(() => {document.querySelector(".notifier").style.opacity = 0;}, 7000);
+      | 
+
     main
+      .notifier
+        .nheader
+          p.nhead Info
+          .nclose_btn
+            span.material-icons close
+        .nbody
+          | Ellie is not yet complete project. you can follow the progress 
+          a(href="./blog.html") here
       section.theme-section.section.sectionLead
         p.section-one-leader Ellie is a scripting engine that runs on embedded and sandboxed environments.
         img.section-two-leader(src="./img/controller.png" alt="Ellie Controller" width="285" heigh="285")
