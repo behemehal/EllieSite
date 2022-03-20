@@ -149,7 +149,7 @@ if (targeted == null) {
                 script.setAttribute("data-term", parsedConf.title);
                 script.setAttribute("data-reactions-enabled", "1");
                 script.setAttribute("data-emit-metadata", "0");
-                script.setAttribute("data-theme", "https://ellie.behemehal.net/css/gis_theme.css");
+                script.setAttribute("data-theme", "https://www.ellie-lang.org/css/gis_theme.css");
                 script.setAttribute("data-lang", "en");
                 script.setAttribute("crossorigin", "anonymous");
 
