@@ -4,7 +4,7 @@
 
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_500.tsx";
-import * as $2 from "./routes/_app.tsx";
+import * as $2 from "./routes/about.tsx";
 import * as $3 from "./routes/api/joke.ts";
 import * as $4 from "./routes/blog.tsx";
 import * as $5 from "./routes/blog/[name].tsx";
@@ -14,13 +14,14 @@ import * as $8 from "./routes/wip.tsx";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/DownloadButton.tsx";
 import * as $$2 from "./islands/Footer.tsx";
-import * as $$3 from "./islands/Header.tsx";
+import * as $$3 from "./islands/HeadCustom.tsx";
+import * as $$4 from "./islands/Header.tsx";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $0,
     "./routes/_500.tsx": $1,
-    "./routes/_app.tsx": $2,
+    "./routes/about.tsx": $2,
     "./routes/api/joke.ts": $3,
     "./routes/blog.tsx": $4,
     "./routes/blog/[name].tsx": $5,
@@ -32,7 +33,8 @@ const manifest = {
     "./islands/Counter.tsx": $$0,
     "./islands/DownloadButton.tsx": $$1,
     "./islands/Footer.tsx": $$2,
-    "./islands/Header.tsx": $$3,
+    "./islands/HeadCustom.tsx": $$3,
+    "./islands/Header.tsx": $$4,
   },
   baseUrl: import.meta.url,
 };

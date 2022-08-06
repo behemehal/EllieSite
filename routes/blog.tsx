@@ -4,6 +4,7 @@ import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import Header from "../islands/Header.tsx";
 import Footer from "../islands/Footer.tsx";
 import moment from "https://deno.land/x/momentjs@2.29.1-deno/mod.ts";
+import HeadCustom from "../islands/HeadCustom.tsx";
 
 const posts: JSX.Element[] = [];
 
@@ -51,9 +52,14 @@ fetch(
 
 export default function Blog() {
   return (
-    <body className="d-flex flex-column h-1001">
+    <body>
+      <HeadCustom
+        title="Ellie Blog"
+        description="Ellie is a scripting engine that runs on embedded and sandboxed environments."
+        url="https://www.ellie-lang.org"
+      />
       <Header isDark={true} />
-      <main>
+      <main class="mt-4">
         <section className="section dark-section">
             <br />
           <h1 className="text-center">

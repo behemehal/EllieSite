@@ -3,12 +3,18 @@ import { h } from "preact";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import Header from "../islands/Header.tsx";
 import Footer from "../islands/Footer.tsx";
+import HeadCustom from "../islands/HeadCustom.tsx";
 
 export default function ServerError(props: PageProps) {
   return (
     <body className="d-flex flex-column h-1001">
+      <HeadCustom
+        title="Ellie Programing Language"
+        description="Ellie is a scripting engine that runs on embedded and sandboxed environments."
+        url="https://www.ellie-lang.org"
+      />
       <Header />
-      <main>
+      <main class="mt-4">
         <section className="theme-section section">
           <img
             className="display-center"

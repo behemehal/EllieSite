@@ -19,9 +19,6 @@ export default function Header(props: HeaderProps) {
           <a className="navbar-brand" href="/">
             <span className="mt-5 mb-3">
               Ellie
-              <sup data-toggle="tooltip" title="Hooray!" class="text-nowrap">
-                ALPHA
-              </sup>
             </span>
           </a>
           <button

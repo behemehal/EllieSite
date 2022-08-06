@@ -6,15 +6,21 @@ import { IS_BROWSER } from "$fresh/runtime.ts";
 import Header from "../islands/Header.tsx";
 import DownloadButton from "../islands/DownloadButton.tsx";
 import Footer from "../islands/Footer.tsx";
+import HeadCustom from "../islands/HeadCustom.tsx";
 
 //<div class="vr"></div>
 //<DownloadButton />
 
 export default function Home() {
   return (
-    <body>
+    <body className="d-flex flex-column h-1001">
+      <HeadCustom
+        title="Ellie Programing Language"
+        description="Ellie is a scripting engine that runs on embedded and sandboxed environments."
+        url="https://www.ellie-lang.org"
+      />
       <Header />
-      <main>
+      <main class="mt-4">
         <section className="theme-section section sectionLead">
           <div className="section-one-leader">
             <p className="section-one-leader">
