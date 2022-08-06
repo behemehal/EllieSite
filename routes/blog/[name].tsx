@@ -1,13 +1,9 @@
 /** @jsx h */
 import { h } from "preact";
-import {
-  AppProps,
-  HandlerContext,
-  Handlers,
-  PageProps,
-} from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import Header from "../../islands/Header.tsx";
 import Footer from "../../islands/Footer.tsx";
+import HeadCustom from "../../islands/HeadCustom.tsx";
 import {
   Marked,
   Parsed,
@@ -63,7 +59,6 @@ export const handler: Handlers<BlogData> = {
       },
     );
     let data = await res.text();
-    console.log("Response arrived");
     if (data == "404: Not Found") {
       return new Response("not found", { status: 404 });
     } else {
@@ -106,14 +101,25 @@ export const handler: Handlers<BlogData> = {
 };
 
 export default function BlogPage(props: PageProps<BlogData>) {
-  props.data.updated_at = moment(props.data.updated_at).format("MMMM Do YYYY");
-  props.data.updated_by = "ahmtcn123";
-  console.log(props.data);
   return (
-    <body className="d-flex flex-column h-1001">
+    <body>
+      <HeadCustom
+        title={props.data.title}
+        description={props.data.description}
+        url={`https://www.ellie-lang.org/blog/${props.params.name}`}
+      />
       <Header isDark />
       <main>
-        <section className="theme-section" style={{ "padding": "3rem" }}>
+        <section className="section dark-section">
+          <br />
+          <h1 className="text-left">
+            {props.data.title}
+          </h1>
+        </section>
+        <section
+          className="theme-section"
+          style={{ "padding": "3rem" }}
+        >
           <div
             dangerouslySetInnerHTML={{
               __html: props.data.rendered,

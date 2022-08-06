@@ -5,12 +5,11 @@
 import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_500.tsx";
 import * as $2 from "./routes/about.tsx";
-import * as $3 from "./routes/api/joke.ts";
-import * as $4 from "./routes/blog.tsx";
-import * as $5 from "./routes/blog/[name].tsx";
-import * as $6 from "./routes/index.tsx";
-import * as $7 from "./routes/releases.tsx";
-import * as $8 from "./routes/wip.tsx";
+import * as $3 from "./routes/blog.tsx";
+import * as $4 from "./routes/blog/[name].tsx";
+import * as $5 from "./routes/index.tsx";
+import * as $6 from "./routes/releases.tsx";
+import * as $7 from "./routes/wip.tsx";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/DownloadButton.tsx";
 import * as $$2 from "./islands/Footer.tsx";
@@ -22,12 +21,11 @@ const manifest = {
     "./routes/_404.tsx": $0,
     "./routes/_500.tsx": $1,
     "./routes/about.tsx": $2,
-    "./routes/api/joke.ts": $3,
-    "./routes/blog.tsx": $4,
-    "./routes/blog/[name].tsx": $5,
-    "./routes/index.tsx": $6,
-    "./routes/releases.tsx": $7,
-    "./routes/wip.tsx": $8,
+    "./routes/blog.tsx": $3,
+    "./routes/blog/[name].tsx": $4,
+    "./routes/index.tsx": $5,
+    "./routes/releases.tsx": $6,
+    "./routes/wip.tsx": $7,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
