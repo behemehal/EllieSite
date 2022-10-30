@@ -20,7 +20,7 @@ export default function HeadCustom(props: HeaderProps) {
       <meta property="og:description" content={props.description} />
       <meta
         property="og:image"
-        content="https://www.ellie-lang.org/img/Social.png"
+        content="img/Social.png"
       />
 
       <meta property="twitter:url" content={props.url} />
@@ -28,7 +28,7 @@ export default function HeadCustom(props: HeaderProps) {
       <meta property="twitter:description" content={props.description} />
       <meta
         property="twitter:image"
-        content="https://www.ellie-lang.org/img/Social.png"
+        content="img/Social.png"
       />
 
       <meta name="title" content={props.title} />
@@ -59,9 +59,9 @@ export default function HeadCustom(props: HeaderProps) {
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
         rel="stylesheet"
       />
-      <link href="/css/index.css" rel="stylesheet" type="text/css" />
-      <link href="/css/theme.css" rel="stylesheet" type="text/css" />
-      <link href="/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="css/index.css" rel="stylesheet" type="text/css" />
+      <link href="css/theme.css" rel="stylesheet" type="text/css" />
+      <link href="css/bootstrap.min.css" rel="stylesheet" />
       <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
@@ -73,8 +73,16 @@ export default function HeadCustom(props: HeaderProps) {
       />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" />
 
-      <script src="/js/bootstrap.bundle.min.js"></script>
-      <script src="/js/index.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/index.js"></script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLTTGZYE80"></script>
+      <script>{`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZLTTGZYE80');
+      `}</script>
     </Head>
   );
 }

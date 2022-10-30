@@ -26,7 +26,7 @@ fetch(
           <div class="container">
             <div class="row">
               <div class="col">
-                <a href={`/blog/${post.file_name.replace(".md","")}`} style="font-size: 1.7em;">
+                <a href={`/blog/${post.file_name.replace(".md", "")}`} style="font-size: 1.7em;">
                   {post.title}
                 </a>
                 <h6>{post.description}</h6>
@@ -61,7 +61,7 @@ export default function Blog() {
       <Header isDark={true} />
       <main class="mt-4">
         <section className="section dark-section">
-            <br />
+          <br />
           <h1 className="text-center">
             EllieBlog
           </h1>

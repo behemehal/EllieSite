@@ -12,12 +12,12 @@ export default function Header() {
         rel="noopener"
         className="imgbh"
         target="_blank"
-        href="https://behemehal.net"
+        href="https://behemehal.org"
       >
         <img
           alt="behemehalLogo"
           target="_blank"
-          src="https://behemehal.net/assets/img/bBrand/main.png"
+          src="https://behemehal.org/img/bBrand/main.png"
           width="30"
           height="30"
         />

@@ -7,6 +7,11 @@ import Footer from "../islands/Footer.tsx";
 export default function ServerError(props: PageProps) {
   return (
     <body className="d-flex flex-column h-1001">
+      <HeadCustom
+        title="Ellie Programing Language - 500 Internal Server Error"
+        description="500 Internal Server Error"
+        url="https://www.ellie-lang.org"
+      />
       <Header />
       <main>
         <section className="theme-section section">
@@ -18,7 +23,7 @@ export default function ServerError(props: PageProps) {
           <p className="text-center">
             Please try again later. If the problem persists, please contact us.
             <br />
-            <a href="mailto:info@behemehal.net">info@behemehal.net</a>
+            <a href="mailto:info@behemehal.org">info@behemehal.org</a>
           </p>
           <br />
           <br />
