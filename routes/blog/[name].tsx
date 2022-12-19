@@ -13,24 +13,23 @@ import moment from "https://deno.land/x/momentjs@2.29.1-deno/mod.ts";
 
 //Parse key and value seperated by ':'
 function parseKeyValue(str: string) {
-  var arr = str.toString().split(":");
+  const arr = str.toString().split(":");
   return {
     key: arr[0].trim(),
     value: arr[1].trim(),
   };
 }
 
-//Convert object array which has key and value to object (This comment exist because co-pilot)
-function convertToObject(arr: any) {
-  var obj: any = {};
-  for (var i = 0; i < arr.length; i++) {
+function convertToObject(arr: { [key: string]: string }[]) {
+  const obj: { [key: string]: string } = {};
+  for (let i = 0; i < arr.length; i++) {
     obj[arr[i].key] = arr[i].value;
   }
   return obj;
 }
 
 function whichLineEnding(source: string) {
-  var temp = source.indexOf("\n");
+  const temp = source.indexOf("\n");
   if (source[temp - 1] === "\r") {
     return "\r\n";
   }
@@ -49,25 +48,25 @@ interface BlogData {
 
 export const handler: Handlers<BlogData> = {
   async GET(_req, ctx) {
-    let res = await fetch(
+    const res = await fetch(
       new Request(
         "https://raw.githubusercontent.com/behemehal/EllieBlog/main/blogs/" +
-          ctx.params.name + ".md",
+        (ctx.params.name.includes(".md") ? ctx.params.name : ctx.params.name + ".md"),
       ),
       {
         method: "GET",
       },
     );
-    let data = await res.text();
+    const data = await res.text();
     if (data == "404: Not Found") {
-      return new Response("not found", { status: 404 });
+      return Response.redirect("https://www.ellie-lang.org/404");
     } else {
       const lineEnding = whichLineEnding(data);
       const lines = data.split(lineEnding);
       const conf = lines.slice(1, 7);
       const md = lines.slice(8);
-      const parsedConf: any = convertToObject(
-        conf.map((x) => parseKeyValue(x)),
+      const parsedConf = convertToObject(
+        conf.map((x) => parseKeyValue(x))
       );
 
       const renderer = new Renderer();
@@ -75,7 +74,7 @@ export const handler: Handlers<BlogData> = {
         return `<img src="${href}" alt="${text}" title="${title}" class="img-fluid">`;
       };
 
-      let c = Marked.setOptions({
+      const c = Marked.setOptions({
         langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
         pedantic: false,
         gfm: true,
@@ -113,12 +112,12 @@ export default function BlogPage(props: PageProps<BlogData>) {
         <section className="section dark-section">
           <br />
           <h1 className="text-left">
-            {props.data.title}
+            {props.data.title.split("@")[0]}
           </h1>
         </section>
         <section
           className="theme-section"
-          style={{ "padding": "3rem" }}
+          style={{ "padding": "3rem", minHeight: 500 }}
         >
           <div
             dangerouslySetInnerHTML={{
@@ -150,7 +149,23 @@ export default function BlogPage(props: PageProps<BlogData>) {
             </div>
           )}
         </section>
-
+        <section className="section dark-section">
+          <div className="giscus" />
+          <script
+            src="https://giscus.app/client.js"
+            data-repo="behemehal/ellieblog"
+            data-repo-id="R_kgDOGdv8Ow"
+            data-category="Comments"
+            data-category-id="DIC_kwDOGdv8O84CAHDn"
+            data-mapping="specific"
+            data-term={props.data.title}
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-theme="https://www.ellie-lang.org/css/gis_theme.css"
+            data-lang="en"
+            crossOrigin="anonymous"
+          />
+        </section>
         <Footer />
       </main>
     </body>

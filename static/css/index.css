@@ -219,3 +219,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.section-single-fullSize {
+  height: calc(100vh - 238px);
+}

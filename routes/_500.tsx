@@ -3,6 +3,7 @@ import { h } from "preact";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import Header from "../islands/Header.tsx";
 import Footer from "../islands/Footer.tsx";
+import HeadCustom from "../islands/HeadCustom.tsx";
 
 export default function ServerError(props: PageProps) {
   return (
@@ -14,7 +15,7 @@ export default function ServerError(props: PageProps) {
       />
       <Header />
       <main>
-        <section className="theme-section section">
+        <section className="theme-section section section-single-fullSize">
           <img className="display-center" alt="404" src="https://media.giphy.com/media/NTur7XlVDUdqM/giphy.gif" />
           <br />
           <h2 class="text-center">

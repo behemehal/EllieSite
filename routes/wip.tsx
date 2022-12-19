@@ -5,7 +5,7 @@ import Header from "../islands/Header.tsx";
 import Footer from "../islands/Footer.tsx";
 import HeadCustom from "../islands/HeadCustom.tsx";
 
-export default function ServerError(props: PageProps) {
+export default function ServerError(_: PageProps) {
   return (
     <body className="d-flex flex-column h-1001">
       <HeadCustom
@@ -14,8 +14,8 @@ export default function ServerError(props: PageProps) {
         url="https://www.ellie-lang.org"
       />
       <Header />
-      <main class="mt-4">
-        <section className="theme-section section">
+      <main>
+        <section className="theme-section section section-single-fullSize">
           <img
             className="display-center"
             alt="404"

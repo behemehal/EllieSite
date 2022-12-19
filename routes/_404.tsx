@@ -6,7 +6,7 @@ import Footer from "../islands/Footer.tsx";
 import HeadCustom from "../islands/HeadCustom.tsx";
 
 
-export default function NotFound(props: PageProps) {
+export default function NotFound(_: PageProps) {
   return (
     <body className="d-flex flex-column h-1001">
       <HeadCustom
@@ -16,7 +16,7 @@ export default function NotFound(props: PageProps) {
       />
       <Header />
       <main>
-        <section className="theme-section">
+        <section className="theme-section section-single-fullSize">
           <img
             className="display-center"
             alt="404"

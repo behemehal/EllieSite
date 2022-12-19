@@ -27,7 +27,7 @@ fetch(
             <div class="row">
               <div class="col">
                 <a href={`/blog/${post.file_name.replace(".md", "")}`} style="font-size: 1.7em;">
-                  {post.title}
+                  {post.title.split("@")[0]}
                 </a>
                 <h6>{post.description}</h6>
               </div>
