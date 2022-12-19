@@ -1,0 +1,3 @@
+User-agent: * Disallow: 
+Allow: /*.html$
+Sitemap: https://www.ellie-lang.org/sitemap.xml
