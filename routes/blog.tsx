@@ -17,8 +17,12 @@ fetch(
   },
 )
   .then((response) => response.json())
-  .then((data) => {
+  .then((_data) => {
     let light = false;
+    //Sort by date
+    const data = _data.sort((a: any, b: any) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
     for (let i = 0; i < data.length; i++) {
       const post = data[i];
       posts.push(
@@ -37,7 +41,7 @@ fetch(
                 >
                   {post.publisher}
                 </a>
-                <p>{moment(post.date).format("MM.DD.YYYY HH:mm")}</p>
+                <p>{moment(post.date).format("DD.MM.YYYY HH:mm")}</p>
               </div>
             </div>
           </div>
