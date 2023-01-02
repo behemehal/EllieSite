@@ -14,8 +14,8 @@ export default function ServerError(props: PageProps) {
         url="https://www.ellie-lang.org"
       />
       <Header />
-      <main class="mt-4">
-        <section className="theme-section section">
+      <main>
+        <section className="theme-section section section-single-fullSize">
           <img
             className="display-center"
             alt="404"

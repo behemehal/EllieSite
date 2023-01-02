@@ -26,6 +26,7 @@ export default function NotFound(_: PageProps) {
             The page you're looking for is not found
           </h4>
           <br />
+          <br />
         </section>
         <Footer />
       </main>
