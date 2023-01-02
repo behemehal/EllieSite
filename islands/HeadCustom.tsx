@@ -69,7 +69,7 @@ export default function HeadCustom(props: HeaderProps) {
 
       <link
         rel="alternate"
-        type="application/rss+xml"
+        type="rss"
         title="RSS Feed for Ellie Language"
         href="https://ellie-lang.org/rss"
       />
