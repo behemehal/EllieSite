@@ -68,6 +68,12 @@ export default function HeadCustom(props: HeaderProps) {
       />
 
       <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="RSS Feed for Ellie Language"
+        href="https://ellie-lang.org/rss"
+      />
+      <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
       />
