@@ -1,5 +1,6 @@
 /** @jsx h */
 import { Handlers } from "$fresh/server.ts";
+import moment from "https://deno.land/x/momentjs@2.29.1-deno/mod.ts";
 
 
 //Parse key and value seperated by ':'
@@ -49,7 +50,7 @@ export const handler: Handlers<BlogData> = {
     );
     const json = await res.json();
 
-    let blogChannel = {
+    const blogChannel : any = {
       title: "Ellie Blog",
       link: "https://www.ellie-lang.org/blog",
       description: "Ellie is a type-safe programing language that runs on embedded and sandboxed environments. You can read the blog posts about the language here",
@@ -59,23 +60,23 @@ export const handler: Handlers<BlogData> = {
       managingEditor: "ahmetcanco@gmai.com (Ahmetcan Aksu)",
       webMaster: "ahmetcanco@gmail.com (Ahmetcan Aksu)",
       lastBuildDate: new Date().toUTCString(),
-      items: [],
+      items: []
     };
 
     const data = json.sort((a: any, b: any) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
-    blogChannel.lastBuildDate = new Date(data[0].date).toUTCString();
+    blogChannel.lastBuildDate = moment(data[0].date).format();
 
     for (let i = 0; i < data.length; i++) {
       const post = data[i];
-      let item = {
+      const item = {
         title: post.title.split("@")[0],
         link: `https://www.ellie-lang.org/blog/${post.file_name.replace(".md", "")}`,
         description: post.description,
         author: "https://github.com/" + post.publisher.replace("@", ""),
-        guid: post.title.split("@")[1],
-        pubDate: new Date(post.date).toUTCString(),
+        guid: `https://www.ellie-lang.org/blog/${post.file_name.replace(".md", "")}`,
+        pubDate: moment(post.date).format(),
         language: "en-us",
       }
       blogChannel.items.push(item);
@@ -99,6 +100,9 @@ export const handler: Handlers<BlogData> = {
       for (let j = 0; j < channel.items.length; j++) {
         const item = channel.items[j];
         const itemAttributes = Object.entries(item).map(([key, value]) => {
+          if (key === "guid") {
+            return `<guid isPermaLink="false">${value}</guid>`;
+          }
           return `<${key}>${value}</${key}>`;
         }).join("");
         attributes += `<item>${itemAttributes}</item>`;
