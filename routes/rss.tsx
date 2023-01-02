@@ -78,6 +78,7 @@ export const handler: Handlers<BlogData> = {
         category: "Programming, Technology, Programming Languages, Blog",
         guid: post.title.split("@")[1],
         pubDate: new Date(post.date).toUTCString(),
+        language: "en-us",
       }
       blogChannel.items.push(item);
     }
@@ -108,11 +109,11 @@ export const handler: Handlers<BlogData> = {
       _channels += `<channel>${attributes}</channel>`;
     }
 
-    const rss_feed = `<?xml version="1.0" encoding="UTF-8" ?><rss version="2.0">${_channels}</rss>`;
+    const rss_feed = `<?xml version="1.0" encoding="UTF-8" ?><rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0">${_channels}</rss>`;
 
     return new Response(rss_feed, {
       headers: {
-        "content-type": "xml",
+        "content-type": "application/rss+xml; charset=utf-8",
       },
       status: 200,
       statusText: "OK",
