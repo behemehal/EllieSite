@@ -46,11 +46,12 @@ export const handler: Handlers<BlogData> = {
       ),
       {
         method: "GET",
+        cache: "no-cache",
       },
     );
     const json = await res.json();
 
-    const blogChannel : any = {
+    const blogChannel: any = {
       title: "Ellie Blog",
       link: "https://www.ellie-lang.org/blog",
       description: "Ellie is a type-safe programing language that runs on embedded and sandboxed environments. You can read the blog posts about the language here",

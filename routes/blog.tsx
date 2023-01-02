@@ -14,6 +14,7 @@ fetch(
   ),
   {
     method: "GET",
+    cache: "no-cache",
   },
 )
   .then((response) => response.json())
