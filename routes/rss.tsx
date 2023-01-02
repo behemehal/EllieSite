@@ -58,7 +58,6 @@ export const handler: Handlers<BlogData> = {
       generator: "Ellie Site RSS Generator",
       managingEditor: "ahmetcanco@gmai.com (Ahmetcan Aksu)",
       webMaster: "ahmetcanco@gmail.com (Ahmetcan Aksu)",
-      category: "Programming, Technology, Programming Languages, Blog",
       lastBuildDate: new Date().toUTCString(),
       items: [],
     };
@@ -75,7 +74,6 @@ export const handler: Handlers<BlogData> = {
         link: `https://www.ellie-lang.org/blog/${post.file_name.replace(".md", "")}`,
         description: post.description,
         author: "https://github.com/" + post.publisher.replace("@", ""),
-        category: "Programming, Technology, Programming Languages, Blog",
         guid: post.title.split("@")[1],
         pubDate: new Date(post.date).toUTCString(),
         language: "en-us",
@@ -113,10 +111,8 @@ export const handler: Handlers<BlogData> = {
 
     return new Response(rss_feed, {
       headers: {
-        "content-type": "application/rss+xml; charset=utf-8",
-      },
-      status: 200,
-      statusText: "OK",
+        "content-type": "xml",
+      }
     });
   },
 };
