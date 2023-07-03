@@ -2,3 +2,4 @@ p
 docs.html
 node_modules
 old
+deno.lock

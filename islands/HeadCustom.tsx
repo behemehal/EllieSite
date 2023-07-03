@@ -89,6 +89,9 @@ export default function HeadCustom(props: HeaderProps) {
 
         gtag('config', 'G-ZLTTGZYE80');
       `}</script>
+
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9072743301348476"
+        crossOrigin="anonymous" />
     </Head>
   );
 }
