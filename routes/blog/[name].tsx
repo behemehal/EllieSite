@@ -49,9 +49,9 @@ export const handler: Handlers<BlogData> = {
     const res = await fetch(
       new Request(
         "https://raw.githubusercontent.com/behemehal/EllieBlog/main/blogs/" +
-          (ctx.params.name.includes(".md")
-            ? ctx.params.name
-            : ctx.params.name + ".md"),
+        (ctx.params.name.includes(".md")
+          ? ctx.params.name
+          : ctx.params.name + ".md"),
       ),
       {
         method: "GET",
@@ -119,35 +119,54 @@ export default function BlogPage(props: PageProps<BlogData>) {
           className="theme-section"
           style={{ "padding": "3rem", minHeight: 500 }}
         >
-          <div
-            dangerouslySetInnerHTML={{
-              __html: props.data.rendered,
-            }}
-          />
-          <div style="text-align: right;">
-            <a
-              style="text-align: right;"
-              href={`https://github.com/${props.data.publisher}`}
-            >
-              Created by @ahmtcn123
-            </a>
-            <p style="text-align: right;">
-              Created at {props.data.date}
-            </p>
-          </div>
-          {(!!props.data.updated_at && !!props.data.updated_by) && (
-            <div style="text-align: right;">
-              <a
-                style="text-align: right;"
-                href={`https://github.com/${props.data.updated_by}`}
-              >
-                Updated by @ahmtcn123
-              </a>
-              <p style="text-align: right;">
-                Updated at{" " + props.data.updated_at}
-              </p>
+          <div style={{ display: "flex", marginRight: 10 }}>
+            {/* Main Draw */}
+            <div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: props.data.rendered,
+                }}
+              />
+              <div style="text-align: right;">
+                <a
+                  style="text-align: right;"
+                  href={`https://github.com/${props.data.publisher}`}
+                >
+                  Created by @ahmtcn123
+                </a>
+                <p style="text-align: right;">
+                  Created at {props.data.date}
+                </p>
+              </div>
+              {(!!props.data.updated_at && !!props.data.updated_by) && (
+                <div style="text-align: right;">
+                  <a
+                    style="text-align: right;"
+                    href={`https://github.com/${props.data.updated_by}`}
+                  >
+                    Updated by @ahmtcn123
+                  </a>
+                  <p style="text-align: right;">
+                    Updated at{" " + props.data.updated_at}
+                  </p>
+                </div>
+              )}
             </div>
-          )}
+            <div>
+              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9072743301348476"
+                crossOrigin="anonymous"></script>
+              {/*<!-- BlogRight -->*/}
+              <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-9072743301348476"
+                data-ad-slot="7921840869"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({ });
+              </script>
+            </div>
+          </div>
         </section>
         <section className="section dark-section">
           <div className="giscus" />

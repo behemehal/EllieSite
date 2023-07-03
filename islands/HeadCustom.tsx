@@ -77,8 +77,8 @@ export default function HeadCustom(props: HeaderProps) {
       />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" />
 
-      <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/index.js"></script>
+      <script src="/js/bootstrap.bundle.min.js"></script>
+      <script src="/js/index.js"></script>
       <script
         async
         src="https://www.googletagmanager.com/gtag/js?id=G-ZLTTGZYE80"
