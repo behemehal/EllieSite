@@ -94,11 +94,8 @@ export default function HeadCustom(props: HeaderProps) {
       `}
       </script>
 
-      <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9072743301348476"
-        crossOrigin="anonymous"
-      />
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9072743301348476"
+        crossOrigin="anonymous" />
     </Head>
   );
 }
