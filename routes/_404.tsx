@@ -3,7 +3,6 @@ import Header from "../islands/Header.tsx";
 import Footer from "../islands/Footer.tsx";
 import HeadCustom from "../islands/HeadCustom.tsx";
 
-
 export default function NotFound(_: PageProps) {
   return (
     <body className="d-flex flex-column h-1001">

@@ -9,8 +9,9 @@ export default function Header(props: HeaderProps) {
   return (
     <header>
       <nav
-        className={`navbar navbar-expand-md fixed-top bg-theme navbar-theme ${props.isDark ? "dark-section" : ""
-          }`}
+        className={`navbar navbar-expand-md fixed-top bg-theme navbar-theme ${
+          props.isDark ? "dark-section" : ""
+        }`}
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
@@ -52,11 +53,13 @@ export default function Header(props: HeaderProps) {
                 Playground
               </a>
             </li>
-            {/*             <li>
+            {
+              /*             <li>
               <a className="nav-link px-2" href="https://ellie-lang.org">
                 Lia - Package Manager
               </a>
-            </li> */}
+            </li> */
+            }
           </ul>
         </div>
       </nav>

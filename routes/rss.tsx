@@ -1,7 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
 import moment from "https://deno.land/x/momentjs@2.29.1-deno/mod.ts";
 
-
 //Parse key and value seperated by ':'
 function parseKeyValue(str: string) {
   const arr = str.toString().split(":");
@@ -53,14 +52,15 @@ export const handler: Handlers<BlogData> = {
     const blogChannel: any = {
       title: "Ellie Blog",
       link: "https://www.ellie-lang.org/blog",
-      description: "Ellie is a type-safe programing language that runs on embedded and sandboxed environments. You can read the blog posts about the language here",
+      description:
+        "Ellie is a type-safe programing language that runs on embedded and sandboxed environments. You can read the blog posts about the language here",
       language: "en-us",
       copyright: "Ellie Language GPL-2.0",
       generator: "Ellie Site RSS Generator",
       managingEditor: "ahmetcanco@gmai.com (Ahmetcan Aksu)",
       webMaster: "ahmetcanco@gmail.com (Ahmetcan Aksu)",
       lastBuildDate: new Date().toUTCString(),
-      items: []
+      items: [],
     };
 
     const data = json.sort((a: any, b: any) => {
@@ -72,23 +72,26 @@ export const handler: Handlers<BlogData> = {
       const post = data[i];
       const item = {
         title: post.title.split("@")[0],
-        link: `https://www.ellie-lang.org/blog/${post.file_name.replace(".md", "")}`,
+        link: `https://www.ellie-lang.org/blog/${
+          post.file_name.replace(".md", "")
+        }`,
         description: post.description,
         author: "https://github.com/" + post.publisher.replace("@", ""),
-        guid: `https://www.ellie-lang.org/blog/${post.file_name.replace(".md", "")}`,
+        guid: `https://www.ellie-lang.org/blog/${
+          post.file_name.replace(".md", "")
+        }`,
         pubDate: moment(post.date).format(),
         language: "en-us",
-      }
+      };
       blogChannel.items.push(item);
     }
-
 
     let channels = [
       blogChannel,
       //Releases Channel to be implemented
     ];
 
-    let _channels = '';
+    let _channels = "";
     for (let i = 0; i < channels.length; i++) {
       const channel = channels[i];
       let attributes = Object.entries(channel).map(([key, value]) => {
@@ -111,12 +114,13 @@ export const handler: Handlers<BlogData> = {
       _channels += `<channel>${attributes}</channel>`;
     }
 
-    const rss_feed = `<?xml version="1.0" encoding="UTF-8" ?><rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0">${_channels}</rss>`;
+    const rss_feed =
+      `<?xml version="1.0" encoding="UTF-8" ?><rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0">${_channels}</rss>`;
 
     return new Response(rss_feed, {
       headers: {
         "content-type": "xml",
-      }
+      },
     });
   },
 };

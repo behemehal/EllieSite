@@ -24,7 +24,9 @@ export default function ServerError(props: PageProps) {
             This page moved
           </h2>
           <p className="text-center">
-            Releases are now on <a href="https://lia.ellie-lang.org">Lia</a> with CLI updater
+            Releases are now on <a href="https://lia.ellie-lang.org">Lia</a>
+            {" "}
+            with CLI updater
           </p>
           <br />
           <br />

@@ -30,7 +30,10 @@ fetch(
           <div class="container">
             <div class="row">
               <div class="col">
-                <a href={`/blog/${post.file_name.replace(".md", "")}`} style="font-size: 1.7em;">
+                <a
+                  href={`/blog/${post.file_name.replace(".md", "")}`}
+                  style="font-size: 1.7em;"
+                >
                   {post.title.split("@")[0]}
                 </a>
                 <h6>{post.description}</h6>
@@ -67,11 +70,15 @@ export default function Blog() {
         <section className="section dark-section">
           <br />
           <h1 className="text-center">
-            EllieBlog <a style={{ fontSize: 25 }} href="https://www.ellie-lang.org/rss" target="_blank">
+            EllieBlog{" "}
+            <a
+              style={{ fontSize: 25 }}
+              href="https://www.ellie-lang.org/rss"
+              target="_blank"
+            >
               rss
             </a>
           </h1>
-
         </section>
         {posts}
         <Footer />

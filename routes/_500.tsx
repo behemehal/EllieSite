@@ -14,7 +14,11 @@ export default function ServerError(props: PageProps) {
       <Header />
       <main>
         <section className="theme-section section section-single-fullSize">
-          <img className="display-center" alt="404" src="https://media.giphy.com/media/NTur7XlVDUdqM/giphy.gif" />
+          <img
+            className="display-center"
+            alt="404"
+            src="https://media.giphy.com/media/NTur7XlVDUdqM/giphy.gif"
+          />
           <br />
           <h2 class="text-center">
             500 - Internal Server Error

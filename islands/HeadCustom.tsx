@@ -79,17 +79,26 @@ export default function HeadCustom(props: HeaderProps) {
 
       <script src="js/bootstrap.bundle.min.js"></script>
       <script src="js/index.js"></script>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLTTGZYE80"></script>
-      <script>{`
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZLTTGZYE80"
+      >
+      </script>
+      <script>
+        {`
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-ZLTTGZYE80');
-      `}</script>
+      `}
+      </script>
 
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9072743301348476"
-        crossOrigin="anonymous" />
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9072743301348476"
+        crossOrigin="anonymous"
+      />
     </Head>
   );
 }

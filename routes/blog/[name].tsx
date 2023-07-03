@@ -6,7 +6,7 @@ import {
   Marked,
   Parsed,
   Renderer,
-} from "https://deno.land/x/markdown@v2.0.0/mod.ts";
+} from "https://raw.githubusercontent.com/JacobWeisenburger/markdown/patch-1/mod.ts";
 import moment from "https://deno.land/x/momentjs@2.29.1-deno/mod.ts";
 
 //Parse key and value seperated by ':'
@@ -49,7 +49,9 @@ export const handler: Handlers<BlogData> = {
     const res = await fetch(
       new Request(
         "https://raw.githubusercontent.com/behemehal/EllieBlog/main/blogs/" +
-        (ctx.params.name.includes(".md") ? ctx.params.name : ctx.params.name + ".md"),
+          (ctx.params.name.includes(".md")
+            ? ctx.params.name
+            : ctx.params.name + ".md"),
       ),
       {
         method: "GET",
@@ -64,7 +66,7 @@ export const handler: Handlers<BlogData> = {
       const conf = lines.slice(1, 7);
       const md = lines.slice(8);
       const parsedConf = convertToObject(
-        conf.map((x) => parseKeyValue(x))
+        conf.map((x) => parseKeyValue(x)),
       );
 
       const renderer = new Renderer();
