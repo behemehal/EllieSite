@@ -1,5 +1,3 @@
-/** @jsx h */
-import { Fragment, h } from "preact";
 import { lazy, Suspense } from "preact/compat";
 import { useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";

@@ -1,5 +1,4 @@
-/** @jsx h */
-import { Component, h } from "preact";
+import { Component } from "preact";
 import { useRef, useState } from "preact/hooks";
 import { IS_BROWSER } from "$fresh/runtime.ts";
 
@@ -7,16 +6,6 @@ class DownloadButton extends Component {
   constructor() {
     super();
     this.state = { errored: true, loaded: true };
-    console.log("DownloadButton constructor");
-    let platform = IS_BROWSER
-      ? navigator.userAgent.includes("Mac")
-        ? "mac"
-        : navigator.userAgent.includes("Win")
-        ? "win"
-        : "linux"
-      : "";
-
-      console.log("platform", platform);
 
     //fetch(
     //  "https://api.github.com/repos/behemehal/ellie-language/releases/latest",

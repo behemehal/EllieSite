@@ -1,5 +1,4 @@
-/** @jsx h */
-import { h, JSX } from "preact";
+import { JSX } from "preact";
 import { HandlerContext, Handlers, PageProps } from "$fresh/server.ts";
 import Header from "../islands/Header.tsx";
 import Footer from "../islands/Footer.tsx";
@@ -68,8 +67,11 @@ export default function Blog() {
         <section className="section dark-section">
           <br />
           <h1 className="text-center">
-            EllieBlog
+            EllieBlog <a style={{ fontSize: 25 }} href="https://www.ellie-lang.org/rss" target="_blank">
+              rss
+            </a>
           </h1>
+
         </section>
         {posts}
         <Footer />

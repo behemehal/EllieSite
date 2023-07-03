@@ -1,4 +1,3 @@
-/** @jsx h */
 import { Handlers } from "$fresh/server.ts";
 import moment from "https://deno.land/x/momentjs@2.29.1-deno/mod.ts";
 
