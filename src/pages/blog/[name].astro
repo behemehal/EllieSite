@@ -1,0 +1,95 @@
+---
+export const prerender = false;
+
+import { marked } from "marked";
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import {
+  fetchBlogPostSource,
+  parseBlogPost,
+  cleanTitle,
+  githubHandle,
+  hasValue,
+} from "../../lib/blog";
+
+const { name } = Astro.params;
+
+const source = name ? await fetchBlogPostSource(name) : null;
+if (!source) {
+  return Astro.redirect("/404");
+}
+
+const { meta, body } = parseBlogPost(source);
+const rendered = marked.parse(body, { gfm: true, breaks: false }) as string;
+
+const title = meta.title ? cleanTitle(meta.title) : "Ellie Blog";
+const showUpdate = hasValue(meta.updated_at) && hasValue(meta.updated_by);
+---
+
+<Layout
+  title={title}
+  description={meta.description ?? ""}
+  url={`https://www.ellie-lang.org/blog/${name}`}
+  isDark
+>
+  <main>
+    <section class="section dark-section">
+      <br />
+      <h1 class="text-left">{title}</h1>
+    </section>
+    <section class="theme-section" style="padding: 3rem; min-height: 500px;">
+      <div style="display: flex; margin-right: 10px;">
+        <div class="blog-content">
+          <Fragment set:html={rendered} />
+          <div style="text-align: right;">
+            <a href={`https://github.com/${githubHandle(meta.publisher)}`}>
+              Created by {meta.publisher}
+            </a>
+            <p style="text-align: right;">Created at {meta.date}</p>
+          </div>
+          {
+            showUpdate && (
+              <div style="text-align: right;">
+                <a href={`https://github.com/${githubHandle(meta.updated_by)}`}>
+                  Updated by {meta.updated_by}
+                </a>
+                <p style="text-align: right;">Updated at {meta.updated_at}</p>
+              </div>
+            )
+          }
+        </div>
+        <div>
+          <!-- BlogRight ad slot -->
+          <ins
+            class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-9072743301348476"
+            data-ad-slot="7921840869"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+          <script is:inline>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+    </section>
+    <section class="section dark-section">
+      <div class="giscus"></div>
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo="behemehal/ellieblog"
+        data-repo-id="R_kgDOGdv8Ow"
+        data-category="Comments"
+        data-category-id="DIC_kwDOGdv8O84CAHDn"
+        data-mapping="specific"
+        data-term={title}
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="https://www.ellie-lang.org/css/gis_theme.css"
+        data-lang="en"
+        crossorigin="anonymous"></script>
+    </section>
+    <Footer />
+  </main>
+</Layout>

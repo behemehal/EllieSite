@@ -1,0 +1,84 @@
+---
+export const prerender = false;
+
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import {
+  fetchBlogIndex,
+  cleanTitle,
+  formatDateTime,
+  githubHandle,
+  type BlogPostMeta,
+} from "../../lib/blog";
+
+let posts: BlogPostMeta[] = [];
+let failed = false;
+try {
+  posts = await fetchBlogIndex();
+} catch (error) {
+  console.error("Failed to load blog index", error);
+  failed = true;
+}
+---
+
+<Layout
+  title="Ellie Blog"
+  description="Ellie is a scripting engine that runs on embedded and sandboxed environments."
+  url="https://www.ellie-lang.org/blog"
+  isDark
+>
+  <main class="mt-4">
+    <section class="section dark-section">
+      <br />
+      <h1 class="text-center">
+        EllieBlog{" "}
+        <a style="font-size: 25px;" href="/rss" target="_blank" rel="noopener">
+          rss
+        </a>
+      </h1>
+    </section>
+
+    {
+      failed && (
+        <section class="section theme-section">
+          <p class="text-center">
+            Blog posts are temporarily unavailable. Please try again later.
+          </p>
+        </section>
+      )
+    }
+
+    {
+      posts.map((post, index) => (
+        <div
+          class={`section ${index % 2 === 0 ? "dark-section" : "light-section"}`}
+        >
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <a
+                  href={`/blog/${post.file_name.replace(".md", "")}`}
+                  style="font-size: 1.7em;"
+                >
+                  {cleanTitle(post.title)}
+                </a>
+                <h6>{post.description}</h6>
+              </div>
+              <div class="col" style="text-align: right;">
+                <a
+                  href={`https://github.com/${githubHandle(post.publisher)}`}
+                  rel="noopener"
+                >
+                  {post.publisher}
+                </a>
+                <p>{formatDateTime(post.date)}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+
+    <Footer />
+  </main>
+</Layout>

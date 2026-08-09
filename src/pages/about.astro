@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="About Ellie"
+  description="Ellie is a scripting engine that runs on embedded and sandboxed environments."
+  url="https://www.ellie-lang.org/about"
+  isDark
+>
+  <main class="mt-4">
+    <section class="section dark-section">
+      <br />
+      <h1 class="text-center">Why Ellie?</h1>
+      <hr class="w-25 display-center" />
+      <p class="w-50 display-center text-center">
+        Ellie is a type-safe language that designed to be run on the bare-metal
+        platforms or sandboxed environments.
+      </p>
+    </section>
+    <section class="section theme-section sectionLead">
+      <div class="feature-block">
+        <div class="feature-text-l">
+          <h3>Portable</h3>
+          <hr />
+          <p class="feature-text-p">
+            Ellie engine expands and shrinks with features. You can shrink ellie
+            engine as small as 49kb.
+          </p>
+        </div>
+        <div class="feature-photo-r">
+          <img src="/img/page_res/content3.png" alt="portable" width="900" />
+        </div>
+      </div>
+    </section>
+    <section class="section theme-section sectionLead">
+      <div class="feature-block">
+        <div class="feature-text-l">
+          <h3>Library Sizes</h3>
+          <hr />
+          <p class="feature-text-p">
+            Ellie engine expands and shrinks with features. You can shrink ellie
+            engine as small as 49kb.
+          </p>
+        </div>
+        <div class="feature-photo-r">
+          <img src="/img/page_res/content3.png" alt="portable" width="900" />
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>
