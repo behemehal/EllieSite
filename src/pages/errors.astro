@@ -1,0 +1,338 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import {
+  fetchErrorIndex,
+  categoryColor,
+  messageParts,
+  ERROR_SOURCE_URL,
+  WARNING_SOURCE_URL,
+  type EllieDiagnostic,
+} from "../lib/ellie";
+
+// Runs at build time (this page is prerendered), so the index is baked into
+// static HTML and mirrors the compiler source as of the last build.
+let errors: EllieDiagnostic[] = [];
+let warnings: EllieDiagnostic[] = [];
+let failed = false;
+try {
+  ({ errors, warnings } = await fetchErrorIndex());
+} catch (error) {
+  console.error("Failed to build error index", error);
+  failed = true;
+}
+
+const categories = [...new Set(errors.map((e) => e.title))].sort();
+
+const rows = (items: EllieDiagnostic[]) =>
+  items.map((item) => ({
+    ...item,
+    color: categoryColor(item.title),
+    parts: messageParts(item.message),
+    search: `${item.code} ${item.title} ${item.message}`.toLowerCase(),
+  }));
+
+const errorRows = rows(errors);
+const warningRows = rows(warnings);
+---
+
+<Layout
+  title="Ellie Error Index"
+  description="Reference of every error and warning the Ellie compiler can emit, generated from the compiler source."
+  url="https://www.ellie-lang.org/errors"
+  isDark
+>
+  <main class="mt-4">
+    <section class="section dark-section">
+      <br />
+      <h1 class="text-center">Error Index</h1>
+      <p class="text-center index-lead">
+        Every diagnostic the Ellie compiler can emit. Placeholders like{" "}
+        <code class="ph">$token</code> are filled in with your code at compile time.
+      </p>
+      <p class="text-center source-links">
+        <a href={ERROR_SOURCE_URL} target="_blank" rel="noopener">errors source</a>
+        <span aria-hidden="true">·</span>
+        <a href={WARNING_SOURCE_URL} target="_blank" rel="noopener">warnings source</a>
+      </p>
+    </section>
+
+    {
+      failed ? (
+        <section class="section theme-section">
+          <p class="text-center">
+            The error index could not be generated from the compiler source.
+            You can browse it directly on{" "}
+            <a href={ERROR_SOURCE_URL} target="_blank" rel="noopener">
+              GitHub
+            </a>
+            .
+          </p>
+        </section>
+      ) : (
+        <section class="section theme-section">
+          <div class="index-controls">
+            <input
+              id="index-search"
+              type="search"
+              class="index-search"
+              placeholder="Search by code, type or message…"
+              aria-label="Search diagnostics"
+            />
+            <div class="index-stats">
+              <span>{errors.length} errors</span>
+              <span>{warnings.length} warnings</span>
+            </div>
+          </div>
+
+          {categories.length > 0 && (
+            <div class="index-legend">
+              {categories.map((title) => (
+                <span class="type-badge" style={`--badge:${categoryColor(title)}`}>
+                  {title}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <h2 class="index-heading">Errors</h2>
+          <div class="table-scroll">
+            <table class="index-table" id="error-table">
+              <thead>
+                <tr>
+                  <th scope="col">Code</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Fix</th>
+                </tr>
+              </thead>
+              <tbody>
+                {errorRows.map((row) => (
+                  <tr data-search={row.search}>
+                    <td class="cell-code"><code>{row.code}</code></td>
+                    <td>
+                      <span class="type-badge" style={`--badge:${row.color}`}>
+                        {row.title}
+                      </span>
+                    </td>
+                    <td class="cell-message">
+                      {row.parts.map((part) =>
+                        part.placeholder ? (
+                          <code class="ph">{part.text}</code>
+                        ) : (
+                          <span>{part.text}</span>
+                        ),
+                      )}
+                    </td>
+                    <td>
+                      {row.assist === "full" && (
+                        <span class="assist assist-full">auto-fix</span>
+                      )}
+                      {row.assist === "semi" && (
+                        <span class="assist assist-semi">assist</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h2 class="index-heading">Warnings</h2>
+          <div class="table-scroll">
+            <table class="index-table" id="warning-table">
+              <thead>
+                <tr>
+                  <th scope="col">Code</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Fix</th>
+                </tr>
+              </thead>
+              <tbody>
+                {warningRows.map((row) => (
+                  <tr data-search={row.search}>
+                    <td class="cell-code"><code>{row.code}</code></td>
+                    <td>
+                      <span class="type-badge" style={`--badge:${row.color}`}>
+                        {row.title}
+                      </span>
+                    </td>
+                    <td class="cell-message">
+                      {row.parts.map((part) =>
+                        part.placeholder ? (
+                          <code class="ph">{part.text}</code>
+                        ) : (
+                          <span>{part.text}</span>
+                        ),
+                      )}
+                    </td>
+                    <td>
+                      {row.assist === "full" && (
+                        <span class="assist assist-full">auto-fix</span>
+                      )}
+                      {row.assist === "semi" && (
+                        <span class="assist assist-semi">assist</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p id="no-results" class="no-results" hidden>
+            No diagnostics match your search.
+          </p>
+        </section>
+      )
+    }
+
+    <Footer />
+  </main>
+</Layout>
+
+<script is:inline>
+  (function () {
+    const input = document.getElementById("index-search");
+    if (!input) return;
+    const rows = Array.from(document.querySelectorAll("tr[data-search]"));
+    const empty = document.getElementById("no-results");
+
+    input.addEventListener("input", function () {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+      for (const row of rows) {
+        const match = !q || row.getAttribute("data-search").includes(q);
+        row.hidden = !match;
+        if (match) visible++;
+      }
+      if (empty) empty.hidden = visible !== 0;
+    });
+  })();
+</script>
+
+<style>
+  .index-lead {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+  .source-links a {
+    margin: 0 0.35rem;
+  }
+  .index-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .index-search {
+    flex: 1 1 260px;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid rgba(136, 74, 111, 0.35);
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #fff;
+    color: #462b45;
+  }
+  .index-search:focus {
+    outline: none;
+    border-color: #884a6f;
+    box-shadow: 0 0 0 3px rgba(136, 74, 111, 0.2);
+  }
+  .index-stats {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  .index-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .index-heading {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .table-scroll {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(136, 74, 111, 0.18);
+  }
+  .index-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 0.95rem;
+  }
+  .index-table th,
+  .index-table td {
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(136, 74, 111, 0.12);
+  }
+  .index-table thead th {
+    position: sticky;
+    top: 0;
+    background: #f5eaef;
+    color: #884a6f;
+    font-weight: 600;
+    z-index: 1;
+  }
+  .index-table tbody tr:hover {
+    background: rgba(136, 74, 111, 0.05);
+  }
+  .cell-code code {
+    font-weight: 600;
+    color: #884a6f;
+    white-space: nowrap;
+  }
+  .cell-message {
+    color: #462b45;
+    line-height: 1.5;
+    min-width: 260px;
+  }
+  .cell-message .ph,
+  .index-lead .ph {
+    background: rgba(136, 74, 111, 0.12);
+    color: #884a6f;
+    padding: 0.05em 0.35em;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  .type-badge {
+    display: inline-block;
+    background: var(--badge, #884a6f);
+    color: #fff;
+    padding: 0.15em 0.6em;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+  .assist {
+    display: inline-block;
+    padding: 0.1em 0.55em;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    border: 1px solid currentColor;
+    white-space: nowrap;
+  }
+  .assist-full {
+    color: #2f8f7f;
+  }
+  .assist-semi {
+    color: #b5652d;
+  }
+  .no-results {
+    text-align: center;
+    margin-top: 1.5rem;
+    opacity: 0.8;
+  }
+</style>

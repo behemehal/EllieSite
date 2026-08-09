@@ -1,55 +1,196 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+
+const features = [
+  {
+    icon: "verified_user",
+    title: "Type safe by default",
+    desc: "The compiler proves your code is type safe, so whole classes of runtime errors are caught before you ship.",
+  },
+  {
+    icon: "hail",
+    title: "Portable",
+    desc: "Compile packages to every supported platform. The engine expands and shrinks with the features you use — as small as 49kb.",
+  },
+  {
+    icon: "memory",
+    title: "Low memory usage",
+    desc: "Designed for constrained hardware, Ellie runs comfortably on low-memory and embedded devices.",
+  },
+  {
+    icon: "running_with_errors",
+    title: "Fail safe",
+    desc: "Protected, per-device framework with fail-safe countermeasures so you can recover from errors gracefully.",
+  },
+  {
+    icon: "terminal",
+    title: "Rich CLI",
+    desc: "Helpful command line tooling with assistments and visualizations for understanding and debugging your code.",
+  },
+  {
+    icon: "security",
+    title: "Sandboxed",
+    desc: "Runs on bare-metal or fully sandboxed environments, keeping untrusted code isolated from its host.",
+  },
+];
 ---
 
 <Layout
   title="About Ellie"
-  description="Ellie is a scripting engine that runs on embedded and sandboxed environments."
+  description="Ellie is a type-safe programing language that runs on embedded and sandboxed environments."
   url="https://www.ellie-lang.org/about"
   isDark
 >
   <main class="mt-4">
     <section class="section dark-section">
       <br />
-      <h1 class="text-center">Why Ellie?</h1>
+      <h1 class="text-center">About Ellie</h1>
       <hr class="w-25 display-center" />
-      <p class="w-50 display-center text-center">
-        Ellie is a type-safe language that designed to be run on the bare-metal
-        platforms or sandboxed environments.
+      <p class="w-50 display-center text-center about-lead">
+        Ellie is a type-safe programing language designed to run on the
+        bare-metal platforms and sandboxed environments where a scripting
+        engine has to be small, predictable and safe.
       </p>
     </section>
-    <section class="section theme-section sectionLead">
+
+    <section class="section theme-section">
+      <h2 class="text-center">Why Ellie?</h2>
+      <hr class="w-25 display-center" />
+      <div class="about-grid">
+        {
+          features.map((feature) => (
+            <div class="about-card">
+              <div class="icon-container">
+                <span class="material-icons">{feature.icon}</span>
+              </div>
+              <h5>{feature.title}</h5>
+              <p>{feature.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section dark-section">
       <div class="feature-block">
         <div class="feature-text-l">
-          <h3>Portable</h3>
+          <h3>Built by Behemehal</h3>
           <hr />
           <p class="feature-text-p">
-            Ellie engine expands and shrinks with features. You can shrink ellie
-            engine as small as 49kb.
+            Ellie is an open-source project developed by Behemehal under the
+            GPL-2.0 license. The engine, compiler and tooling are all developed
+            in the open on GitHub.
           </p>
         </div>
-        <div class="feature-photo-r">
-          <img src="/img/page_res/content3.png" alt="portable" width="900" />
+        <div class="feature-text-r">
+          <div class="about-links">
+            <a
+              href="https://github.com/behemehal/Ellie-Language"
+              class="btn btn-theme d-flex gap-1"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="material-icons">code</span>
+              Source on GitHub
+            </a>
+            <a
+              href="https://behemehal.org"
+              class="btn btn-theme d-flex gap-1"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="material-icons">business</span>
+              About Behemehal
+            </a>
+          </div>
         </div>
       </div>
     </section>
-    <section class="section theme-section sectionLead">
-      <div class="feature-block">
-        <div class="feature-text-l">
-          <h3>Library Sizes</h3>
-          <hr />
-          <p class="feature-text-p">
-            Ellie engine expands and shrinks with features. You can shrink ellie
-            engine as small as 49kb.
-          </p>
-        </div>
-        <div class="feature-photo-r">
-          <img src="/img/page_res/content3.png" alt="portable" width="900" />
-        </div>
+
+    <section class="section theme-section text-center">
+      <h2>Try it yourself</h2>
+      <hr class="w-25 display-center" />
+      <div class="about-cta">
+        <a
+          href="https://playground.ellie-lang.org"
+          class="btn btn-theme d-flex gap-1"
+          role="button"
+        >
+          <span class="material-icons">play_arrow</span>
+          Playground
+        </a>
+        <a
+          href="https://docs.ellie-lang.org"
+          class="btn btn-theme d-flex gap-1"
+          role="button"
+        >
+          <span class="material-icons">menu_book</span>
+          Documentation
+        </a>
+        <a href="/errors" class="btn btn-theme d-flex gap-1" role="button">
+          <span class="material-icons">error_outline</span>
+          Error Index
+        </a>
       </div>
     </section>
 
     <Footer />
   </main>
 </Layout>
+
+<style>
+  .about-lead {
+    line-height: 1.7;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-card {
+    text-align: center;
+    padding: 1.75rem 1.25rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(68, 43, 69, 0.08);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(68, 43, 69, 0.14);
+  }
+  .about-card h5 {
+    margin-bottom: 0.5rem;
+  }
+  .about-card p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 0;
+  }
+  .about-links,
+  .about-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .about-cta {
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .feature-text-r .about-links {
+    justify-content: flex-end;
+  }
+  @media (max-width: 900px) {
+    .about-links,
+    .feature-text-r .about-links {
+      justify-content: center;
+    }
+  }
+</style>
