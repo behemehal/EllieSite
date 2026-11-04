@@ -1,0 +1,149 @@
+---
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Canonical URL of the page. */
+  url?: string;
+  /** Extra classes for the <body> element. */
+  bodyClass?: string;
+  /** Render the header in its dark variant. */
+  isDark?: boolean;
+}
+
+const {
+  title,
+  description,
+  url = "https://www.ellie-lang.org",
+  bodyClass = "",
+  isDark = false,
+} = Astro.props;
+
+const socialImage = new URL("/img/Social.png", Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>{title}</title>
+
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="ellie,ellie programing language,program,programing language,behemehal"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="copyright" content="Behemehal" />
+    <meta name="language" content="English" />
+    <meta name="distribution" content="global" />
+    <meta name="revisit-after" content="5 days" />
+    <meta name="author" content="Behemehal" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={socialImage} />
+
+    <link rel="icon" href="/img/EllieCharIcon@0,1x.png" type="image/png" />
+    <link rel="canonical" href={url} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS Feed for Ellie Language"
+      href="https://www.ellie-lang.org/rss"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link href="/css/index.css" rel="stylesheet" />
+    <link href="/css/theme.css" rel="stylesheet" />
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/polish.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZLTTGZYE80"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-ZLTTGZYE80");
+    </script>
+
+    <!-- Google AdSense / Funding Choices -->
+    <script
+      is:inline
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9072743301348476"
+      crossorigin="anonymous"></script>
+    <script
+      is:inline
+      async
+      src="https://fundingchoicesmessages.google.com/i/pub-9072743301348476?ers=1"
+      nonce="IYusMFKpWSZZwPawbhBWSA"></script>
+    <script is:inline nonce="IYusMFKpWSZZwPawbhBWSA">
+      (function () {
+        function signalGooglefcPresent() {
+          if (!window.frames["googlefcPresent"]) {
+            if (document.body) {
+              const iframe = document.createElement("iframe");
+              iframe.style =
+                "width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;";
+              iframe.style.display = "none";
+              iframe.name = "googlefcPresent";
+              document.body.appendChild(iframe);
+            } else {
+              setTimeout(signalGooglefcPresent, 0);
+            }
+          }
+        }
+        signalGooglefcPresent();
+      })();
+    </script>
+  </head>
+  <body class={bodyClass}>
+    <Header isDark={isDark} />
+    <slot />
+
+    <!-- Scripts that operate on the rendered DOM, loaded at the end of body. -->
+    <script
+      is:inline
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"
+    ></script>
+    <script is:inline src="/js/bootstrap.bundle.min.js"></script>
+    <script is:inline src="/js/index.js"></script>
+    <script is:inline>
+      if (window.hljs) window.hljs.highlightAll();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Ellie Programing Language"
+  description="Ellie is a scripting engine that runs on embedded and sandboxed environments."
+  url="https://www.ellie-lang.org"
+  bodyClass="d-flex flex-column h-1001"
+>
+  <main class="mt-4">
+    <section class="theme-section section sectionLead">
+      <div class="section-one-leader">
+        <p class="section-one-leader">
+          Ellie is a type-safe programing language that runs on embedded and
+          sandboxed environments.
+        </p>
+        <br class="intBtns" />
+        <div class="gap-3 intBtns">
+          <a
+            href="https://playground.ellie-lang.org"
+            role="button"
+            class="btn btn-theme d-flex gap-1"
+            style="max-width: 100px;"
+          >
+            <span class="material-icons">play_arrow</span>
+            Try it
+          </a>
+        </div>
+      </div>
+
+      <img
+        class="section-two-leader"
+        src="/img/controller.png"
+        alt="Ellie Controller"
+        width="285"
+        height="285"
+      />
+
+      <div class="gap-3 indBtns">
+        <a
+          href="https://playground.ellie-lang.org"
+          role="button"
+          class="btn btn-theme d-flex gap-1 display-center"
+          style="max-width: 100px;"
+        >
+          <span class="material-icons">play_arrow</span>
+          Try it
+        </a>
+      </div>
+    </section>
+
+    <section class="dark-section section">
+      <div class="row">
+        <div class="col">
+          <div class="detail-container">
+            <div class="icon-container">
+              <span class="material-icons">hail</span>
+            </div>
+            <div class="detail-text"><span>Portability</span></div>
+            <div class="detail-desc">
+              <span>Compile packages to all platforms</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="detail-container">
+            <div class="icon-container">
+              <span class="material-icons">memory</span>
+            </div>
+            <div class="detail-text"><span>Low memory usage</span></div>
+            <div class="detail-desc">
+              <span>Run your code in low memory devices</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="detail-container">
+            <div class="icon-container">
+              <span class="material-icons">running_with_errors</span>
+            </div>
+            <div class="detail-text"><span>Fail safe countermeasures</span></div>
+            <div class="detail-desc">
+              <span>
+                Recover errors easily with protected per device framework
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-section section">
+      <div class="feature-block">
+        <div class="feature-text-l">
+          <h3>Type safe by default</h3>
+          <hr />
+          <p class="feature-text-p">
+            Ellie compiler makes sure that your code is type safe. So any error
+            on production will be caught and you will be notified.
+          </p>
+        </div>
+        <div class="feature-photo-r">
+          <img src="/img/page_res/content1.png" alt="Type safe" width="900" />
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section section">
+      <div class="feature-block">
+        <div class="feature-photo-l">
+          <img src="/img/page_res/content2.png" alt="cli" width="900" />
+        </div>
+        <div class="feature-text-r">
+          <h3>Rich CLI</h3>
+          <hr />
+          <p class="feature-text-p">
+            Ellie CLI tools are rich and helpful. Assistments and visualizations
+            are available for your code.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="light-section section">
+      <div class="feature-block">
+        <div class="feature-text-l">
+          <h3>Portable</h3>
+          <hr />
+          <p class="feature-text-p">
+            Ellie engine expands and shrinks with features. You can shrink ellie
+            engine as small as 49kb.
+          </p>
+        </div>
+        <div class="feature-photo-r">
+          <img src="/img/page_res/content3.png" alt="portable" width="900" />
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>

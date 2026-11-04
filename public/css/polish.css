@@ -1,0 +1,190 @@
+/* ============================================================
+   Design polish layer (v2)
+   Loaded last, so it refines the existing Bootstrap + theme look
+   without changing the palette or page structure.
+   ============================================================ */
+
+:root {
+  --ellie-primary: #884a6f;
+  --ellie-primary-dark: #5f334e;
+  --ellie-dark: #462b45;
+  --ellie-light: #f5eaef;
+  --ellie-shadow: rgba(68, 43, 69, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Now that heavier Montserrat weights are loaded, give headings real weight
+   and slightly tighter tracking instead of relying on faux-bold of 300. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p,
+.feature-text-p {
+  line-height: 1.65;
+}
+
+/* --- Links --- */
+a {
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+/* --- Buttons --- */
+.btn-theme {
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--ellie-shadow);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.btn-theme:hover {
+  background-color: var(--ellie-primary-dark) !important;
+  border-color: var(--ellie-primary-dark) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(68, 43, 69, 0.28);
+}
+
+.btn-theme:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px var(--ellie-shadow);
+}
+
+/* --- Navbar --- */
+.navbar.fixed-top {
+  box-shadow: 0 1px 12px rgba(68, 43, 69, 0.08);
+}
+
+.navbar-theme a.nav-link {
+  position: relative;
+  transition: color 0.15s ease;
+}
+
+/* Animated underline on hover, kept inside the link padding. */
+.navbar-theme a.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.navbar-theme a.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* --- Feature "detail" cards on the dark section --- */
+.detail-container {
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.detail-container:hover {
+  transform: translateY(-4px);
+  background-color: rgba(245, 234, 239, 0.05);
+}
+
+.icon-container {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.detail-container:hover .icon-container {
+  transform: scale(1.06);
+}
+
+/* --- Feature imagery --- */
+.feature-photo-r img,
+.feature-photo-l img {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(68, 43, 69, 0.15);
+}
+
+.section-two-leader {
+  filter: drop-shadow(0 12px 24px rgba(68, 43, 69, 0.18));
+}
+
+/* --- Rules / dividers --- */
+hr {
+  border: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  opacity: 0.25;
+}
+
+/* --- Blog --- */
+.blog-content {
+  line-height: 1.7;
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.blog-content pre {
+  overflow-x: auto;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.blog-content :not(pre) > code {
+  background: rgba(136, 74, 111, 0.1);
+  padding: 0.15em 0.4em;
+  border-radius: 5px;
+}
+
+/* The blog list rows are full-width bands; lift the title link on hover. */
+.section .container .row a[href^="/blog/"] {
+  display: inline-block;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.section .container .row a[href^="/blog/"]:hover {
+  transform: translateX(2px);
+  opacity: 0.85;
+}
+
+/* --- Accessibility: visible focus ring --- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid rgba(136, 74, 111, 0.55);
+  outline-offset: 2px;
+}
+
+/* --- Respect reduced-motion preferences --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

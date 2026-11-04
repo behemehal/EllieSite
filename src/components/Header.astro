@@ -1,0 +1,49 @@
+---
+interface Props {
+  isDark?: boolean;
+}
+
+const { isDark = false } = Astro.props;
+---
+
+<header>
+  <nav
+    class={`navbar navbar-expand-md fixed-top bg-theme navbar-theme ${isDark ? "dark-section" : ""}`}
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <span class="mt-5 mb-3">Ellie</span>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul
+        id="navbarCollapse"
+        class="nav col-12 col-md-auto mb-2 justify-content-end mb-md-0 collapse navbar-collapse"
+      >
+        <li>
+          <a class="nav-link px-2" href="/blog">Blog</a>
+        </li>
+        <li>
+          <a class="nav-link px-2" href="/releases">Releases</a>
+        </li>
+        <li>
+          <a class="nav-link px-2" href="https://docs.ellie-lang.org">Docs</a>
+        </li>
+        <li>
+          <a class="nav-link px-2" href="https://playground.ellie-lang.org">
+            Playground
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
